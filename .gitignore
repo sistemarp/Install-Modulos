@@ -1,5 +1,5 @@
 import os, re
-def main()
+def main():
     #Verifica entrada do usuario
     try:
         #Recebe o modulo que o usuario quer instalar
