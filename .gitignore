@@ -1,0 +1,29 @@
+import os, re
+def main()
+    #Verifica entrada do usuario
+    try:
+        #Recebe o modulo que o usuario quer instalar
+        modulo = str(input('Digite o nome do mudulo python que deseja instalar: '))
+        n = 'C:\\Python34\\Scripts\\pip.exe install ' + modulo
+    except:
+        print('Digite apenas letras!')
+        main()
+    #Faz a instalação do modulo pelo comodando do CMD
+    cmd = os.popen(n).readlines()
+
+    #Verifica se foi instalado com sucesso
+    if re.search("Successfully installed", ''.join(cmd)):
+        print('Modulo %s instalado com sucesso!'%modulo)
+        main()
+
+    #Verifica se já esta instalado
+    elif re.search("Requirement already satisfied", ''.join(cmd)):
+        print('Modulo "%s" Já esta instalado!' % modulo)
+        main()
+
+    #Caso foi escrito errado ou não exista retorna erro
+    else:
+        print('ERRO: %s Não existe ou foi escrito errado!' %modulo)
+        main()
+
+main()
